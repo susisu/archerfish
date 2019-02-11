@@ -16,7 +16,7 @@ yarn init # follow the instruction
 Then install archerfish and initialize the project.
 
 ``` shell
-yarn add -D https://github.com/susisu/archerfish.git
+yarn add @susisu/archerfish
 yarn archerfish init
 ```
 
