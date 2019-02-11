@@ -2,6 +2,11 @@
   "name": "@susisu/archerfish",
   "version": "0.0.1",
   "description": "Automates taking screenshots",
+  "keywords": [
+    "screenshot",
+    "puppeteer"
+  ],
+  "repository": "https://github.com/susisu/archerfish.git",
   "author": "Susisu <susisu2413@yahoo.co.jp>",
   "license": "MIT",
   "files": [
