@@ -21,7 +21,7 @@ yarn archerfish init
 ```
 
 ### Creating profile
-Profiles are configured in `archerfish.json5` in the project root directory.
+*Profiles* are configured in `archerfish.json5` in the project root directory.
 
 ``` json5
 {
@@ -36,12 +36,18 @@ A profile name must consist of `A-Za-z0-9`. We keep the profile configuration em
 See [json5.org](https://json5.org) for available syntax in JSON5.
 
 ### Creating tasks
-Task files are placed in `tasks/<profileName>` directory.
+A profile can have multiple *tasks*. Task files are placed in `tasks/<profileName>` directory.
 
-A task is a JavaScript module that exports an asynchronous function. The function is executed by the task runner. See `example/tasks/github/example.js` for a working example.
+A task is a JavaScript (CommonJS) module that exports an asynchronous function. See `example/tasks/github/example.js` for a working example.
+
+``` javascript
+module.exports = async ({ profile, browser, screenshot }) => {
+  // ...
+};
+```
 
 ### Running tasks
-To run all tasks, invoke the task runner with a profile name.
+To run all tasks associated to a profile, invoke `archerfish run` with the profile name.
 
 ``` shell
 yarn archerfish run <profileName>
@@ -53,10 +59,10 @@ You can also run only some tasks specified by globs relative to the `tasks/<prof
 yarn archerfish run <profileName> 'mypage/**/*.js'
 ```
 
-Screenshots are saved to `screenshots/<profileName>` by default.
+Screenshots taken by tasks are saved to `screenshots/<profileName>` by default.
 
 ### Creating subprofile
-Multiple subprofiles can be defined for each profile.
+Multiple *subprofiles* can be defined for each profile.
 
 ``` json5
 {
@@ -67,9 +73,9 @@ Multiple subprofiles can be defined for each profile.
 }
 ```
 
-A profile whose name is separeted by `_` is considered to be a subprofile. In this example, `foo_bar` is a subprofile of `foo`. When you run `yarn archerfish run foo_bar '**/*.js'`, tasks are loaded from `tasks/foo`, while screenshots are saved to `screenshots/foo_bar`.
+A profile whose name is separeted by `_` is considered to be a subprofile. In this example, `foo_bar` is a subprofile of `foo`. When you run `yarn archerfish run foo_bar`, tasks are loaded from `tasks/foo`, while screenshots are saved to `screenshots/foo_bar`.
 
-Actually, there is no need for the parent profile to exist at all.
+NOTE: Actually, there is no need for the parent profile to exist at all.
 
 ### Providing customized data to tasks
 You can provide customized data to the tasks for each profile.
@@ -84,10 +90,10 @@ You can provide customized data to the tasks for each profile.
 }
 ```
 
-The data can be accessed by `profile.data` from each task.
+The data is set to `profile.data` and can be referenced from tasks.
 
 ### Defining hooks
-Hooks are useful to prepare something before / clean something after all tasks.
+*Hooks* are useful to prepare something before / clean something after all tasks.
 
 ``` json5
 {
@@ -102,7 +108,7 @@ Hooks are useful to prepare something before / clean something after all tasks.
 }
 ```
 
-A hook script takes the same form as a task, that is, a JavaScript module that exports an asynchronous function.
+A hook script takes the same form as a task i a JavaScript module that exports an asynchronous function, except that it will not take screenshots.
 
 ## License
 [MIT License](http://opensource.org/licenses/mit-license.php)
