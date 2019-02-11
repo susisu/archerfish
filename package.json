@@ -22,7 +22,7 @@
   "scripts": {
     "lint": "eslint lib bin/archerfish example/tasks",
     "lint:fix": "eslint --fix lib bin/archerfish example/tasks",
-    "prepare": "yarn lint"
+    "prepublishOnly": "yarn lint"
   },
   "dependencies": {
     "commander": "^2.19.0",
