@@ -1,4 +1,6 @@
 # archerfish
+[![Build Status](https://travis-ci.com/susisu/archerfish.svg?branch=master)](https://travis-ci.com/susisu/archerfish)
+
 Automates taking screenshots.
 
 ## Usage
