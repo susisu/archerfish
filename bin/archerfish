@@ -10,7 +10,8 @@ commander
   .command("init")
   .description("initialize a project")
   .action(() => {
-    cli.init().catch(err => {
+    const cwd = process.cwd();
+    cli.init(cwd).catch(err => {
       console.error(err); // eslint-disable-line no-console
       process.exit(1);
     });
@@ -20,7 +21,8 @@ commander
   .command("run <profile> [glob...]")
   .description("run tasks")
   .action((profileName, globs) => {
-    cli.run(profileName, globs).catch(err => {
+    const cwd = process.cwd();
+    cli.run(cwd, profileName, globs).catch(err => {
       console.error(err); // eslint-disable-line no-console
       process.exit(1);
     });
