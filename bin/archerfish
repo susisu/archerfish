@@ -5,9 +5,9 @@
 const commander = require("commander");
 
 const cli = require("../lib/cli");
-const { coreLogger } = require("../lib/logger");
+const { getLogger } = require("../lib/logger");
 
-const logger = coreLogger;
+const logger = getLogger("cli");
 
 /**
  * Handles uncaught error: prints error and exits with code 1.
