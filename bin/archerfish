@@ -15,10 +15,10 @@ const logger = coreLogger;
  * @returns {void}
  */
 function handleUncaughtError(err) {
-  if (err.stack) {
-    logger.error(err.stack);
+  if (err && err.stack) {
+    logger.error(`Command failed:\n${err.stack}`);
   } else {
-    logger.error(String(err));
+    logger.error(`Command failed:\n${err}`);
   }
   process.exit(1);
 }
