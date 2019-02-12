@@ -5,16 +5,30 @@
 const commander = require("commander");
 
 const cli = require("../lib/cli");
+const { coreLogger } = require("../lib/logger");
+
+const logger = coreLogger;
+
+/**
+ * Handles uncaught error: prints error and exits with code 1.
+ * @param {*} err
+ * @returns {void}
+ */
+function handleUncaughtError(err) {
+  if (err.stack) {
+    logger.error(err.stack);
+  } else {
+    logger.error(String(err));
+  }
+  process.exit(1);
+}
 
 commander
   .command("init")
   .description("initialize a project")
   .action(() => {
     const cwd = process.cwd();
-    cli.init(cwd).catch(err => {
-      console.error(err); // eslint-disable-line no-console
-      process.exit(1);
-    });
+    cli.init(cwd).catch(handleUncaughtError);
   });
 
 commander
@@ -22,10 +36,7 @@ commander
   .description("run tasks")
   .action((profileName, globs) => {
     const cwd = process.cwd();
-    cli.run(cwd, profileName, globs).catch(err => {
-      console.error(err); // eslint-disable-line no-console
-      process.exit(1);
-    });
+    cli.run(cwd, profileName, globs).catch(handleUncaughtError);
   });
 
 commander.parse(process.argv);
