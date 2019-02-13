@@ -1,7 +1,7 @@
 # archerfish
 [![Build Status](https://travis-ci.com/susisu/archerfish.svg?branch=master)](https://travis-ci.com/susisu/archerfish)
 
-Automates taking screenshots.
+Automates taking screenshots using [Puppeteer](https://github.com/GoogleChrome/puppeteer).
 
 ## Usage
 ### Installation
