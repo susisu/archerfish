@@ -5,8 +5,9 @@
 const commander = require("commander");
 
 const cli = require("../lib/cli");
-const { getLogger } = require("../lib/logger");
+const { defaultLogger, getLogger } = require("../lib/logger");
 
+defaultLogger.level = "all";
 const logger = getLogger("cli");
 
 /**
