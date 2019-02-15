@@ -21,8 +21,8 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "lint": "eslint *.js lib bin/archerfish example/tasks",
-    "lint:fix": "eslint --fix *.js lib bin/archerfish example/tasks",
+    "lint": "eslint *.js lib bin/archerfish __mocks__ example/tasks",
+    "lint:fix": "eslint --fix *.js lib bin/archerfish __mocks__ example/tasks",
     "test": "jest",
     "prepublishOnly": "yarn lint && yarn test"
   },
