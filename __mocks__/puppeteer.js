@@ -5,7 +5,7 @@ class Page {
     this.browser = browser;
   }
 
-  async screenshot(opts) {
+  async screenshot(opts = {}) {
     this.browser.screenshots.push(opts.path);
   }
 }
