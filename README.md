@@ -127,7 +127,7 @@ By default, tasks are run sequentially. To run tasks concurrently, use `--max-co
 yarn archerfish run <profileName> --max-concurrency <int>
 ```
 
-Please make sure that your tasks are safe to run concurrently. For example, a task should not be affected by cookies set by other tasks.
+When you enable concurrency, make sure that your tasks are safe to be run concurrently. For example, cookies are shared by all tasks and may cause unexpected behavior if multiple tasks access them simultaneously.
 
 ## License
 [MIT License](http://opensource.org/licenses/mit-license.php)
