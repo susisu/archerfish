@@ -35,9 +35,13 @@ commander
 commander
   .command("run <profile> [glob...]")
   .description("run tasks")
-  .action((profileName, globs) => {
+  .option("-C, --max-concurrency <int>", "maximum number of concurrent workers", parseInt)
+  .action((profileName, globs, command) => {
     const cwd = process.cwd();
-    cli.run(cwd, profileName, globs).catch(handleUncaughtError);
+    const opts = {
+      maxConcurrency: command.maxConcurrency,
+    };
+    cli.run(cwd, profileName, globs, opts).catch(handleUncaughtError);
   });
 
 commander.parse(process.argv);
