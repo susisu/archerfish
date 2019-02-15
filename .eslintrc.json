@@ -69,7 +69,6 @@
     "no-void": ["error"],
     "no-warning-comments": ["warn"],
     "no-with": ["error"],
-    "require-await": ["warn"],
     "wrap-iife": ["error"],
 
     "strict": ["error"],
