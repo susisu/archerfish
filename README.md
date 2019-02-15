@@ -50,7 +50,7 @@ The following arguments are passed to each task function:
 
 - `profile`: the profile object that may contain [user customized data](#providing-customized-data-to-tasks).
 - `browser`: a [Browser object](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) created by Puppeteer.
-- `screenshot(target)`: takes a screenshot of given target ([page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) or [element](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-elementhandle))
+- `screenshot(target, opts = {})`: takes a screenshot of given target ([page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) or [element](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-elementhandle))
 - `sleep(ms)`: sleeps for given duration (in milliseconds)
 - `getLogger(name)`: gets a logger by name
 
@@ -119,6 +119,15 @@ The data is set to `profile.data` and can be referenced from tasks.
 ```
 
 A hook script takes the same form as a task i a JavaScript module that exports an asynchronous function, except that it will not take screenshots.
+
+### Running tasks concurrently
+By default, tasks are run sequentially. To run tasks concurrently, use `--max-concurrency` (alias: `-C`) flag to set maximum number of concurrent workers.
+
+``` shell
+yarn archerfish run <profileName> --max-concurrency <int>
+```
+
+Please make sure that your tasks are safe to run concurrently. For example, a task should not be affected by cookies set by other tasks.
 
 ## License
 [MIT License](http://opensource.org/licenses/mit-license.php)
