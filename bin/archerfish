@@ -7,6 +7,8 @@ const commander = require("commander");
 const cli = require("../lib/cli");
 const { defaultLogger, getLogger } = require("../lib/logger");
 
+const pkg = require("../package.json");
+
 defaultLogger.level = "all";
 const logger = getLogger("cli");
 
@@ -48,7 +50,9 @@ commander
     cli.run(cwd, profileName, globs, opts).catch(handleUncaughtError);
   });
 
-commander.parse(process.argv);
+commander
+  .version(pkg["version"], "-v, --version")
+  .parse(process.argv);
 
 if (!handled) {
   commander.help();
