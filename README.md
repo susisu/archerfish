@@ -38,13 +38,23 @@ See [json5.org](https://json5.org) for available syntax in JSON5.
 ### Creating tasks
 A profile can have multiple *tasks*. Task files are placed in `tasks/<profileName>` directory.
 
-A task is a JavaScript (CommonJS) module that exports an asynchronous function. See `example/tasks/github/example.js` for a working example.
+A task is a JavaScript (CommonJS) module that exports an asynchronous function. 
 
 ``` javascript
 module.exports = async ({ profile, browser, screenshot }) => {
   // ...
 };
 ```
+
+The following arguments are passed to each task function:
+
+- `profile`: the profile object that may contain [user customized data](#providing-customized-data-to-tasks).
+- `browser`: a [Browser object](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) created by Puppeteer.
+- `screenshot(target)`: takes a screenshot of given target ([page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) or [element](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-elementhandle))
+- `sleep(ms)`: sleeps for given duration (in milliseconds)
+- `getLogger(name)`: gets a logger by name
+
+See [example/tasks/github/example.js](https://github.com/susisu/archerfish/blob/master/example/tasks/github/example.js) for a working example.
 
 ### Running tasks
 To run all tasks associated to a profile, invoke `archerfish run` with the profile name.
