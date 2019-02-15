@@ -24,10 +24,13 @@ function handleUncaughtError(err) {
   process.exit(1);
 }
 
+let handled = false;
+
 commander
   .command("init")
   .description("initialize a project")
   .action(() => {
+    handled = true;
     const cwd = process.cwd();
     cli.init(cwd).catch(handleUncaughtError);
   });
@@ -37,6 +40,7 @@ commander
   .description("run tasks")
   .option("-C, --max-concurrency <int>", "maximum number of concurrent workers", parseInt)
   .action((profileName, globs, command) => {
+    handled = true;
     const cwd = process.cwd();
     const opts = {
       maxConcurrency: command.maxConcurrency,
@@ -45,3 +49,7 @@ commander
   });
 
 commander.parse(process.argv);
+
+if (!handled) {
+  commander.help();
+}
