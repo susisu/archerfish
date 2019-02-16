@@ -5,7 +5,7 @@ Automates taking screenshots using [Puppeteer](https://github.com/GoogleChrome/p
 
 ## Usage
 ### Installation
-First, create a directory and initialize an npm package.
+First, create a directory and initialize a Node.js package.
 
 ``` shell
 mkdir my-archerfish-tasks
@@ -16,7 +16,7 @@ yarn init # follow the instruction
 Then install archerfish and initialize the project.
 
 ``` shell
-yarn add @susisu/archerfish
+yarn add -D @susisu/archerfish
 yarn archerfish init
 ```
 
