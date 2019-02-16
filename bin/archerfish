@@ -5,11 +5,21 @@
 const commander = require("commander");
 
 const cli = require("../lib/cli");
-const { defaultLogger, getLogger } = require("../lib/logger");
+const { defaultLogger, getLogger, logLevels } = require("../lib/logger");
 
 const pkg = require("../package.json");
 
-defaultLogger.level = "all";
+defaultLogger.level = "info";
+
+/**
+ * @param {string} level
+ * @returns {void}
+ */
+function setLogLevel(level) {
+  if (logLevels.has(level)) {
+    defaultLogger.level = level;
+  }
+}
 
 /**
  * Handles uncaught error: prints error and exits with code 1.
@@ -56,6 +66,7 @@ commander
 
 commander
   .version(pkg["version"], "-v, --version")
+  .option("-l, --log <level>", "set log level (default = info)", setLogLevel)
   .parse(process.argv);
 
 if (!handled) {
