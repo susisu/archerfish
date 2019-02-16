@@ -50,9 +50,9 @@ The following arguments are passed to each task function:
 
 - `profile`: the profile object that may contain [user customized data](#providing-customized-data-to-tasks).
 - `browser`: a [Browser object](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) created by Puppeteer.
-- `screenshot(target, opts = {})`: takes a screenshot of given target ([page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) or [element](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-elementhandle))
-- `sleep(ms)`: sleeps for given duration (in milliseconds)
-- `getLogger(name)`: gets a logger by name
+- `screenshot(target, opts = {})`: takes a screenshot of given target ([page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) or [element](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-elementhandle)).
+- `sleep(ms)`: sleeps for given duration (in milliseconds).
+- `getLogger(name)`: gets a logger instance by name. A logger has `.trace()`, `.info()`, `.warn()`, and `.error()` methods.
 
 See [example/tasks/github/example.js](https://github.com/susisu/archerfish/blob/master/example/tasks/github/example.js) for a working example.
 
