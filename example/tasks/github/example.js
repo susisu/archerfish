@@ -8,8 +8,8 @@ module.exports = async ({ profile, browser, screenshot }) => {
     deviceScaleFactor: 2,
   });
   await page.goto("https://github.com");
-  await screenshot(page);
+  await screenshot(page, "page");
   const elem = await page.$(".Header");
-  await screenshot(elem);
+  await screenshot(elem, "header");
   await page.close();
 };
