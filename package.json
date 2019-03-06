@@ -35,7 +35,8 @@
     "puppeteer": "^1.12.2"
   },
   "devDependencies": {
-    "eslint": "^5.14.0",
+    "@susisu/eslint-config": "^0.0.1",
+    "eslint": "^5.15.1",
     "jest": "^24.1.0",
     "tmp-promise": "^1.0.5"
   }
