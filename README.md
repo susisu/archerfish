@@ -16,7 +16,7 @@ yarn init # follow the instruction
 Then install archerfish and initialize the project.
 
 ``` shell
-yarn add -D @susisu/archerfish
+yarn add -D puppeteer @susisu/archerfish
 yarn archerfish init
 ```
 
