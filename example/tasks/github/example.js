@@ -9,7 +9,7 @@ module.exports = async ({ browser, screenshot }) => {
   });
   await page.goto("https://github.com");
   await screenshot(page, "page");
-  const elem = await page.$(".Header");
+  const elem = await page.$(".header-logged-out");
   await screenshot(elem, "header");
   await page.close();
 };
