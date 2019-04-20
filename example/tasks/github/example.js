@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = async ({ profile, browser, screenshot }) => {
+module.exports = async ({ browser, screenshot }) => {
   const page = await browser.newPage();
   await page.setViewport({
     width            : 1280,
