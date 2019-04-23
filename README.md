@@ -118,7 +118,23 @@ The data is set to `profile.data` and can be referenced from tasks.
 }
 ```
 
-A hook script takes the same form as a task i a JavaScript module that exports an asynchronous function, except that it will not take screenshots.
+A hook script takes the same form as a task i.e. a JavaScript module that exports an asynchronous function, except that it cannot take screenshots.
+
+In the `beforeAll` hook, you can also register additional arguments for subsequent tasks. For example, if you `register` an argument named `foo`,
+
+``` javascript
+module.exports = async ({ register }) => {
+  register({ foo: 42 });
+};
+```
+
+then `foo` will be available in all the subsequent tasks.
+
+``` javascript
+module.exports = async ({ foo }) => {
+  // You can use foo = 42 here.
+};
+```
 
 ### Running tasks concurrently
 By default, tasks are run sequentially. To run tasks concurrently, use `--max-concurrency` (alias: `-C`) flag to set maximum number of concurrent workers.
