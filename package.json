@@ -37,10 +37,10 @@
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
-    "@susisu/eslint-config": "^0.0.4",
-    "eslint": "^6.3.0",
+    "@susisu/eslint-config": "^0.0.5",
+    "eslint": "^6.4.0",
     "jest": "^24.9.0",
-    "puppeteer": "^1.19.0",
+    "puppeteer": "^1.20.0",
     "tmp-promise": "^2.0.2"
   }
 }
